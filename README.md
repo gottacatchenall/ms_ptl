@@ -58,7 +58,7 @@ unobserved species $\mathcal{U}$.
 PTL does this by using ASR to infer a parameterized model of evolution and
 ancestral state of the partially observed trait, and then to simulate the
 parameterized evolutionary model forward from the ancestral node to get an
-estimate of trait values (with uncertainty) for each species in $U$.
+estimate of trait values (with uncertainty) for each species in $\mathcal{U}$.
 
 The _transfer learning_ component in particular comes from the first use of this
 methods to inpute latent representations of species based on their position in
@@ -67,7 +67,7 @@ flexible enough to be applied to either latent or observed traits.
 
 There are two possible models for PTL to be done in: (1) As in
 [@Strydom2022FooWeb], the the evolutionary model is inferred only from the
-observed trait values $O$. (2) The evolutionary model from a trait for
+observed trait values $\mathcal{O}$. (2) The evolutionary model from a trait for
 which there are observations available for the entire species pool. It may be
 the case that evolutionary dynamics inferred with auxillary available
 information for every species (e.g. the raw sequences from which the tree is
@@ -87,6 +87,7 @@ imputation efficacy empirically.
 
 First goal is to test predictive efficacy of PTL under various parameterizations
 of the "ground-truth" evolutionary dynamics, e.g.
+
 - Rate of speciation
 - Rate of evolution
 - Trait dimensionality & correlation
@@ -94,6 +95,7 @@ of the "ground-truth" evolutionary dynamics, e.g.
 at a speciation event)
 
 and second to compare efficacy based on different properties of the data, e.g.
+
 - Proportion of species with trait values
 - Predictive efficacy vs. distance to MRCA w/ data
 - Is there a set of traits for all species to infer evolutionary dynaimcs?
