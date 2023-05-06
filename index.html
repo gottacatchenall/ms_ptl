@@ -341,13 +341,13 @@ Learning</div>
             <p>PTL does this by using ASR to infer a parameterized model
             of evolution and ancestral state of the partially observed
             trait, and then to simulate the parameterized evolutionary
-            model forward from the ancestral node to get an estimate of
-            trait values (with uncertainty) for each species in <span
-            class="math inline">𝒰</span>.</p>
-            <p>The <em>transfer learning</em> component in particular
-            comes from the first use of this method to impute latent
-            representations of species based on their position in
-            food-webs <span class="citation"
+            model forward from the most recent ancestral node with an
+            estimate state to get a prediction of trait values (with
+            uncertainty) for each unobserved species.</p>
+            <p>The <em>transfer learning</em> terminology comes from the
+            first use of this method to impute latent representations of
+            species based on their position in food-webs <span
+            class="citation"
             data-cites="Strydom2022FooWeb Strydom2022GraEmb">(Strydom
             <em>et al.</em> 2022a, b)</span>, although the method if
             flexible enough to be applied to either latent or observed
@@ -355,12 +355,12 @@ Learning</div>
             <p>There are two possible models for PTL to be done in: (1)
             As in <span class="citation"
             data-cites="Strydom2022FooWeb">(Strydom <em>et al.</em>
-            2022a)</span>, the the evolutionary model is inferred only
+            2022a)</span>, where the evolutionary model is inferred only
             from the observed trait values <span
-            class="math inline">𝒪</span>. (2) The evolutionary model
-            from a trait for which there are observations available for
-            the entire species pool. It may be the case that
-            evolutionary dynamics inferred with auxiliary “global”
+            class="math inline">𝒪</span>, or (2) the evolutionary model
+            is infered from a trait for which there are observations
+            available for the entire species pool. It may be the case
+            that evolutionary dynamics inferred with auxiliary “global”
             traits available for every species (e.g. the raw sequences
             from which the tree is built) could improve imputation
             accuracy.</p>
@@ -405,8 +405,8 @@ Learning</div>
             <ul>
             <li>Proportion of species with trait values</li>
             <li>Predictive efficacy vs. distance to MRCA w/ data</li>
-            <li>Is there a set of traits for all species to infer
-            evolutionary dynamics?
+            <li>Is there a set of “global” traits for all species that
+            can be used to infer evolutionary dynamics?
             <ul>
             <li>How correlated are evolution between traits for all
             species vs. traits we want to impute</li>
@@ -444,7 +444,8 @@ Learning</div>
             <h1 id="possible-applications">Possible Applications</h1>
             <p>The core idea of PTL is to fill in gaps for data-sparse
             processes in ecology, so naturally the applications are
-            going to be focused.</p>
+            going to be focused toward things that are hard to
+            sample.</p>
             <p><strong>Link prediction in networks</strong></p>
             <p>This is the inciting question for which the idea was
             conceived<span class="citation"
