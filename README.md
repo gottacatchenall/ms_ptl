@@ -66,7 +66,7 @@ method to impute latent representations of species based on their position in
 food-webs [@Strydom2022FooWeb;@Strydom2022GraEmb], although the method is
 flexible enough to be applied to either latent or observed traits. 
 
-There are two possible models for PTL to be done in: (1) As in
+There are two possible ways for PTL to be done: (1) As in
 [@Strydom2022FooWeb], where the evolutionary model is inferred only from the
 observed trait values $\mathcal{O}$, or (2) the evolutionary model is infered
 from a trait for which there are observations available for the entire species
