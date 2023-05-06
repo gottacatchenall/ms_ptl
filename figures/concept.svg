@@ -171,9 +171,9 @@
        transform="translate(780.53052,-32.119264)"><tspan
          x="-611.70129"
          y="265.15097"
-         id="tspan21286"><tspan
+         id="tspan21466"><tspan
            style="fill:#1a1a1a"
-           id="tspan21284">Evolutionary Dynamics</tspan></tspan></text>
+           id="tspan21464">Evolutionary Dynamics</tspan></tspan></text>
     <path
        style="fill:none;fill-opacity:1;stroke:#4b4b4b;stroke-width:6.66442;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        d="M 83.00591,85.0279 H 40.60971 V 27.262175 H 61.03048 V 7.633332 h 21.00277"
@@ -247,11 +247,11 @@
        transform="translate(858.16863,-13.247731)"><tspan
          x="-733.83447"
          y="-54.323582"
-         id="tspan21292"><tspan
+         id="tspan21472"><tspan
    style="font-style:normal;-inkscape-font-specification:'Roboto Medium';text-align:start;text-anchor:start;fill:#000000"
-   id="tspan21288">Ancestral</tspan> <tspan
+   id="tspan21468">Ancestral</tspan> <tspan
    style="font-style:normal;-inkscape-font-specification:'Roboto Medium';text-align:start;text-anchor:start;fill:#000000"
-   id="tspan21290">Estimate</tspan></tspan></text>
+   id="tspan21470">Estimate</tspan></tspan></text>
     <circle
        style="fill:#ffffff;fill-opacity:1;stroke:#161616;stroke-width:1.45616;stroke-dasharray:none;stroke-opacity:1"
        id="circle8340"
@@ -380,10 +380,10 @@
        transform="translate(636.69699,-12.680072)"><tspan
          x="-356.62607"
          y="-57.425243"
-         id="tspan21296"><tspan
+         id="tspan21476"><tspan
            dx="0 0 0 0 0 0 0 -0.0026460013 0.0026500896 0 0 0 0 -0.0026479086 0.0026462749"
            style="fill:#242424;stroke:none"
-           id="tspan21294">Imputed Trait Values</tspan></tspan></text>
+           id="tspan21474">Imputed Trait Values</tspan></tspan></text>
     <rect
        style="fill:none;fill-opacity:1;stroke:#373737;stroke-width:1.15988;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
        id="rect31795"
