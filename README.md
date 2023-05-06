@@ -9,7 +9,7 @@ both simulated and empirical data
 # What is Phylogenetic Transfer Learning
 
 The goal of PTL is to take a species pool for which a given trait is only
-_partially_ observed, and inpute the value of that trait for the rest of the
+_partially_ observed, and impute the value of that trait for the rest of the
 species based on the evolutionary relatedness of each species. 
 
 ## Ancestral State Reconstruction 
@@ -27,15 +27,15 @@ of interest is discrete or continuous, the models are typically discrete-space
 Markov chains (where the transition matrix is a target of inference) or, in the
 continuous setting, either Brownian Motion or an Ornstein-Uhlenbeck (OU) process
 (where the parameters of the model are the target of inference). The former is
-models neutral evolution and the latter is used when there is hypothesized
+used to model neutral evolution and the latter for when there is hypothesized
 selection on the trait. 
 
 The methodology used to fit models has followed the historical progression from
 maximum parsimony models (a naive approach that favors as few evolutionary
 changes as possible in discrete traits) to maximum likelihood estimation. Modern
-methods revolve on using Bayesian methods, which has the direct benefit of
-including uncertainty estimates in infered ancestral states, and potentially
-uncertainty in the true topology of the phelogeny itself [@Huelsenbeck2001EmpHie]. 
+ASR typically uses Bayesian methods, which has the direct benefit of
+including uncertainty estimates in inferred ancestral states, and potentially
+uncertainty in the true topology of the phylogeny itself [@Huelsenbeck2001EmpHie]. 
 
 Typically rate of trait evolution is learned as a single value across the whole
 phylogeny, and branch length enables 'amount' of evolution. Although in
@@ -44,14 +44,14 @@ evolution and rate values specific to each branch (*sadly 'hierarchical' in this
 is sense different than 'hierarchical' as it is used in @Huelsenbeck2001EmpHie,
 which refers to different tree models but a single set of parameters across all
 branches---this is because these models are constructed in the context of DNA
-substition rates, which are assumed to be fixed). 
+substitution rates, which are assumed to be fixed). 
 
 ## Phylogenetic Transfer Learning
 
 The core goal of Phylogenetic Transfer Learning (PTL) is to take a phylogeny
 $\mathcal{P}$ where the species pool consists of two types of species: (1)
 species with trait observations, which we denote $\mathcal{O}$ and call the
-_observed_ species and (2) species _without_ trait observatoins, which we denote
+_observed_ species and (2) species _without_ trait observations, which we denote
 $\mathcal{U}$ and call _unobserved_, and produce predicted trait values for the
 unobserved species $\mathcal{U}$.
 
@@ -61,7 +61,7 @@ parameterized evolutionary model forward from the ancestral node to get an
 estimate of trait values (with uncertainty) for each species in $\mathcal{U}$.
 
 The _transfer learning_ component in particular comes from the first use of this
-methods to inpute latent representations of species based on their position in
+method to impute latent representations of species based on their position in
 food-webs [@Strydom2022FooWeb;@Strydom2022GraEmb], although the method if
 flexible enough to be applied to either latent or observed traits. 
 
@@ -69,7 +69,7 @@ There are two possible models for PTL to be done in: (1) As in
 [@Strydom2022FooWeb], the the evolutionary model is inferred only from the
 observed trait values $\mathcal{O}$. (2) The evolutionary model from a trait for
 which there are observations available for the entire species pool. It may be
-the case that evolutionary dynamics inferred with auxillary "global" traits available for every species (e.g. the raw sequences from which the tree is
+the case that evolutionary dynamics inferred with auxiliary "global" traits available for every species (e.g. the raw sequences from which the tree is
 built) could improve imputation accuracy. 
 
 ![Conceptual visualization of PTL. Here, the trait of interest is partially
@@ -98,14 +98,14 @@ of the "ground-truth" evolutionary dynamics, e.g.
 - Rate of speciation
 - Rate of evolution
 - Trait dimensionality & correlation
-- Frequency of "puntuactions" (i.e. pertubations to trait value
+- Frequency of "punctuations" (i.e. perturbations to trait value
 at a speciation event)
 
 and second to compare efficacy based on different properties of the data, e.g.
 
 - Proportion of species with trait values
 - Predictive efficacy vs. distance to MRCA w/ data
-- Is there a set of traits for all species to infer evolutionary dynaimcs?
+- Is there a set of traits for all species to infer evolutionary dynamics?
     - How correlated are evolution between traits for all species vs.
     traits we want to impute
 
@@ -114,7 +114,7 @@ and second to compare efficacy based on different properties of the data, e.g.
 Thankfully there are lots of ACR studies out there with data for each extant
 species. So, in short, find as many ACR studies as we can, and do
 crossvalidation where we drop the trait values for ~20% of the species and
-inpute them with PTL, and compare. 
+impute them with PTL, and compare. 
 
 ## Questions to address
 
@@ -128,7 +128,7 @@ inpute them with PTL, and compare.
 - When is PTL overkill?
     - Weighted average of neighbors by distance as alternative (ack. David
       Rolnick for idea) 
-- What diagnostics can we use to be confident a PTL inputated trait is
+- What diagnostics can we use to be confident a PTL imputated trait is
   statistically robust?
 
 # Possible Applications
@@ -140,7 +140,7 @@ naturally the applications are going to be focused.
 
 This is the inciting question for which the idea was
 conceived[@Strydom2022FooWeb]. Interactions are hard to sample
-[@Catchen202MisLin]. Not much to say here that isn't in [@Strydom2022GraEmb].
+[@Catchen2020MisLin]. Not much to say here that isn't in [@Strydom2022GraEmb].
 
 **Forecasting species range shifts**
 
@@ -160,5 +160,7 @@ Reliable information about species movement is sparse, and PTL could fill this g
 **Model species and ecological monitoring**
 
 There are a lot of species on Earth. Monitoring them all would be hard.
-Can we use single species a proxies for larger groups of species? Maybe a
+Can we use single species as a proxy for a larger group of species? Maybe a
 little. PTL can guide us on what good proxy species are. 
+
+# References
