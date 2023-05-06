@@ -78,9 +78,19 @@ There are two possible models for PTL to be done in: (1) As in
 the observed trait values $\mathcal{O}$. (2) The evolutionary model from
 a trait for which there are observations available for the entire
 species pool. It may be the case that evolutionary dynamics inferred
-with auxillary available information for every species (e.g. the raw
+with auxillary "global" traits available for every species (e.g. the raw
 sequences from which the tree is built) could improve imputation
 accuracy.
+
+![Conceptual visualization of PTL. Here, the trait of interest is
+partially observed only for cows and elephants. Using ASR, we can obtain
+an estimate of the ancestral state for the MRCA of the species
+considered here. Here we consider the second version of PTL described
+above, where there are "global" traits available for each species, which
+are used to infer the rate of evolutionary change. Using this
+parameterized model of evolutionary dynamics, we can then project
+forward to get imputed estimates of the trait value for the unobserved
+species, elk and lions.](./figures/concept.png)
 
 # Substance of the paper
 
