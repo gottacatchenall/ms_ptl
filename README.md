@@ -140,7 +140,7 @@ naturally the applications are going to be focused.
 
 This is the inciting question for which the idea was
 conceived[@Strydom2022FooWeb]. Interactions are hard to sample
-[@Catchen2020MisLin]. Not much to say here that isn't in [@Strydom2022GraEmb].
+[@Catchen2023MisLin]. Not much to say here that isn't in [@Strydom2022GraEmb].
 
 **Forecasting species range shifts**
 
