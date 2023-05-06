@@ -63,7 +63,7 @@ for each unobserved species.
 
 The _transfer learning_ terminology comes from the first use of this
 method to impute latent representations of species based on their position in
-food-webs [@Strydom2022FooWeb;@Strydom2022GraEmb], although the method if
+food-webs [@Strydom2022FooWeb;@Strydom2022GraEmb], although the method is
 flexible enough to be applied to either latent or observed traits. 
 
 There are two possible models for PTL to be done in: (1) As in
