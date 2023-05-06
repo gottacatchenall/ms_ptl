@@ -253,16 +253,6 @@ Learning</div>
         <section class="abstract">
             
 
-            <dl>
-                    <dt>Substance</dt>
-                <dd>Find a bunch of ASR datasets, do crossvalidation on
-            tip states, test predictive efficacy on inputing ‘hidden’
-            species.</dd>
-                    <dt>Premise</dt>
-                <dd>Imputing traits among extant species using ancestral
-            state resconstruction (ASR) can be useful for a wide variety
-            of purposes in ecology</dd>
-                </dl>
 
             <div class="artifacts">
                 <a href="Catchen_2023_phylogenetic_transfer_draft.pdf" title="Draft" target="_blank">Draft</a>
@@ -273,17 +263,29 @@ Learning</div>
 
         <article>
             <p><strong>What is this paper?</strong></p>
+            <p>The goal of this paper is to introduce PTL to a broad
+            audience, extend the framework from being specific to latent
+            representation of networks <span class="citation"
+            data-cites="Strydom2022FooWeb Strydom2022GraEmb">(Strydom
+            <em>et al.</em> 2022a, b)</span> to arbitrary traits, and
+            provide guidelines for when PTL is appropriate and how to
+            validate its prediction using both simulated and empirical
+            data</p>
             <h1 id="what-is-phylogenetic-transfer-learning">What is
             Phylogenetic Transfer Learning</h1>
+            <p>The goal of PTL is to take a species pool for which a
+            given trait is only <em>partially</em> observed, and inpute
+            the value of that trait for the rest of the species based on
+            the evolutionary relatedness of each species.</p>
             <h2 id="ancestral-state-reconstruction">Ancestral State
             Reconstruction</h2>
             <p><em>Ancestral State Reconstruction</em> (ASR; also called
             ancestral character reconstruction, character estimation, or
             character mapping) is a core topic in phylogenetics <span
             class="citation" data-cites="Joy2016AncRec">(Joy <em>et
-            al.</em> 2016)</span>.</p>
-            <p>The goal is, given an estimate of a phylogeny <span
-            class="math inline">𝒫</span> and trait values <span
+            al.</em> 2016)</span>. The goal is, given an estimate of a
+            phylogeny <span class="math inline">𝒫</span> and trait
+            values <span
             class="math inline"><em>T</em><sub><em>i</em></sub></span>
             for each extant species in the phylogeny <span
             class="math inline"><em>i</em></span>, to estimate the value
@@ -313,12 +315,11 @@ Learning</div>
             Bollback 2001)</span>.</p>
             <p>Typically rate of trait evolution is learned as a single
             value across the whole phylogeny, and branch length enables
-            ‘amount’ of evolution.</p>
-            <p>Although in principle a hierarchical* model could be used
-            to infer both a global rate of evolution and rate values
-            specific to each branch (*sadly ‘hierarchical’ in this is
-            sense different than ‘hierarchical’ as it is used in <span
-            class="citation"
+            ‘amount’ of evolution. Although in principle a hierarchical*
+            model could be used to infer both a global rate of evolution
+            and rate values specific to each branch (*sadly
+            ‘hierarchical’ in this is sense different than
+            ‘hierarchical’ as it is used in <span class="citation"
             data-cites="Huelsenbeck2001EmpHie">Huelsenbeck &amp;
             Bollback (2001)</span>, which refers to different tree
             models but a single set of parameters across all
@@ -364,57 +365,100 @@ Learning</div>
             which the tree is built) could improve imputation
             accuracy.</p>
             <h1 id="substance-of-the-paper">Substance of the paper</h1>
-            <ol type="1">
-            <li>Simulated phylogenies
-            <ul>
-            <li>Test predictive efficacy of PTL under various
-            parameterization of the “ground-truth” evolutionary dynamics
-            <ul>
-            <li>Rate of speciation</li>
-            <li>Rate of evolution</li>
-            <li>Trait dimensionality &amp; correlation</li>
-            <li>Frequency of “puntuactions” (i.e. pertubations to trait
-            value at a speciation event)</li>
-            </ul></li>
-            <li>Predictive efficancy under different data scenarios
-            <ul>
-            <li>Proportion of species with trait values</li>
-            <li>Predictive efficacy vs. distance to MRCA w/ data</li>
-            <li>Do we have a set of traits for all species to infer
-            evolutionary dynaimcs?
-            <ul>
-            <li>How correlated are evolution between traits for all
-            species vs. traits we want to impute</li>
-            </ul></li>
-            </ul></li>
-            </ul></li>
-            <li>Real data</li>
-            </ol>
+            <p>The main substance of this paper is to provide guidelines
+            on when PTL is robust, and diagnostics to validate PTL
+            estimates. This will be done in two parts:
+            <strong>(1)</strong> using simulated phylogenies and trait
+            values to compare efficacy of PTL imputation across known
+            “ground-truth” evolutionary dynamics, and
+            <strong>(2)</strong> using published ASR datasets, with
+            known values for all extant species, to test imputation
+            efficacy empirically.</p>
+            <h2 id="simulated-phylogenies">Simulated phylogenies</h2>
+            <p>First goal is to test predictive efficacy of PTL under
+            various parameterizations of the “ground-truth” evolutionary
+            dynamics, e.g. - Rate of speciation - Rate of evolution -
+            Trait dimensionality &amp; correlation - Frequency of
+            “puntuactions” (i.e. pertubations to trait value at a
+            speciation event)</p>
+            <p>and second to compare efficacy based on different
+            properties of the data, e.g. - Proportion of species with
+            trait values - Predictive efficacy vs. distance to MRCA w/
+            data - Is there a set of traits for all species to infer
+            evolutionary dynaimcs? - How correlated are evolution
+            between traits for all species vs. traits we want to
+            impute</p>
+            <h2 id="real-data">Real data</h2>
             <p>Thankfully there are lots of ACR studies out there with
             data for each extant species. So, in short, find as many ACR
-            studies as we can,</p>
-            <p>Relevant questions we want to address: - What
-            phylogenetic scales can PTL give robust predictions - There
-            is a clear upper limit (if the MRCA for set of species is
-            too long ago, there will be massive variance in predicted
-            state at the tip) - There is also a lower limit (if there is
+            studies as we can, and do crossvalidation where we drop the
+            trait values for ~20% of the species and inpute them with
+            PTL, and compare.</p>
+            <h2 id="questions-to-address">Questions to address</h2>
+            <ul>
+            <li>What phylogenetic scales can PTL give robust
+            predictions?
+            <ul>
+            <li>There is a clear upper limit (if the MRCA for set of
+            species is too long ago, there will be massive variance in
+            predicted state at the tip)</li>
+            <li>There is also a lower limit (if there is
             horizontal-gene-transfer and the phylogeny is not a reliable
-            proxy for how traits are evolving) - Robustness to noise in
-            trait measurements? - How does this very w/ amount and
-            different types of selection - When is PTL overkill? -
-            Weighted average of neighbors by distance as alternative
-            (ack. David Rolnick for idea)</p>
+            proxy for how traits are evolving)</li>
+            <li>Robustness to noise in trait measurements?</li>
+            <li>How does this very w/ amount and different types of
+            selection</li>
+            </ul></li>
+            <li>When is PTL overkill?
+            <ul>
+            <li>Weighted average of neighbors by distance as alternative
+            (ack. David Rolnick for idea)</li>
+            </ul></li>
+            <li>What diagnostics can we use to be confident a PTL
+            inputated trait is statistically robust?</li>
+            </ul>
             <h1 id="possible-applications">Possible Applications</h1>
             <p>The core idea of PTL is to fill in gaps for data-sparse
-            processes in ecology.</p>
-            <ul>
-            <li>Link prediction</li>
-            <li>SDMs: mechanistic niche predictions on subsets of
-            species</li>
-            <li>Connectivity <span class="citation"
+            processes in ecology, so naturally the applications are
+            going to be focused.</p>
+            <p><strong>Link prediction in networks</strong></p>
+            <p>This is the inciting question for which the idea was
+            conceived<span class="citation"
+            data-cites="Strydom2022FooWeb">(Strydom <em>et al.</em>
+            2022a)</span>. Interactions are hard to sample <span
+            class="citation"
+            data-cites="Catchen202MisLin">(<strong>Catchen202MisLin?</strong>)</span>.
+            Not much to say here that isn’t in <span class="citation"
+            data-cites="Strydom2022GraEmb">(Strydom <em>et al.</em>
+            2022b)</span>.</p>
+            <p><strong>Forecasting species range shifts</strong></p>
+            <p>Many projections of species range shifts under climate
+            change are based on statistical associations between
+            historical species observations and climatic conditions. The
+            gap between so-called correlative vs. mechanistic species
+            distribution models <span class="citation"
+            data-cites="Shabani2016ComAbs">(Shabani <em>et al.</em>
+            2016)</span> is of critical interest for forecasting species
+            ranges, but robust mechanistic understandings about what and
+            why climatic conditions limit where a species’ range require
+            detailed sampling and potentially experimental conditions
+            <span class="citation"
+            data-cites="Lee-Yaw2016SynTra">(Lee-Yaw <em>et al.</em>
+            2016)</span>, which are difficult to scale. PTL could
+            potentially alleviate this by giving good proxies of the
+            physiological limitations of species ranges for more
+            species.</p>
+            <p><strong>Connectivity and movement ecology</strong></p>
+            <p>Reliable information about species movement is sparse,
+            and PTL could fill this gap <span class="citation"
             data-cites="Catchen2023ImpEco">(Catchen <em>et al.</em>
-            2023)</span></li>
-            </ul>
+            2023)</span>.</p>
+            <p><strong>Model species and ecological
+            monitoring</strong></p>
+            <p>There are a lot of species on Earth. Monitoring them all
+            would be hard. Can we use single species a proxies for
+            larger groups of species? Maybe a little. PTL can guide us
+            on what good proxy species are.</p>
             <div id="refs"
             class="references csl-bib-body hanging-indent"
             role="doc-bibliography">
@@ -439,6 +483,23 @@ Learning</div>
             href="https://doi.org/10.1371/journal.pcbi.1004763">Ancestral
             Reconstruction</a>. <em>PLOS Computational Biology</em>, 12,
             e1004763.
+            </div>
+            <div id="ref-Lee-Yaw2016SynTra" class="csl-entry"
+            role="doc-biblioentry">
+            Lee-Yaw, J.A., Kharouba, H.M., Bontrager, M., Mahony, C.,
+            Csergő, A.M., Noreen, A.M.E., <em>et al.</em> (2016). <a
+            href="https://doi.org/10.1111/ele.12604">A synthesis of
+            transplant experiments and ecological niche models suggests
+            that range limits are often niche limits</a>. <em>Ecology
+            Letters</em>, 19, 710–722.
+            </div>
+            <div id="ref-Shabani2016ComAbs" class="csl-entry"
+            role="doc-biblioentry">
+            Shabani, F., Kumar, L. &amp; Ahmadi, M. (2016). <a
+            href="https://doi.org/10.1002/ece3.2332">A comparison of
+            absolute performance of different correlative and
+            mechanistic species distribution models in an independent
+            area</a>. <em>Ecology and Evolution</em>, 6, 5973–5986.
             </div>
             <div id="ref-Strydom2022FooWeb" class="csl-entry"
             role="doc-biblioentry">

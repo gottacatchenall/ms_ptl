@@ -1,17 +1,27 @@
 **What is this paper?**
 
+The goal of this paper is to introduce PTL to a broad audience, extend
+the framework from being specific to latent representation of networks
+[@Strydom2022FooWeb; @Strydom2022GraEmb] to arbitrary traits, and
+provide guidelines for when PTL is appropriate and how to validate its
+prediction using both simulated and empirical data
+
 # What is Phylogenetic Transfer Learning
+
+The goal of PTL is to take a species pool for which a given trait is
+only *partially* observed, and inpute the value of that trait for the
+rest of the species based on the evolutionary relatedness of each
+species.
 
 ## Ancestral State Reconstruction
 
 *Ancestral State Reconstruction* (ASR; also called ancestral character
 reconstruction, character estimation, or character mapping) is a core
-topic in phylogenetics [@Joy2016AncRec].
-
-The goal is, given an estimate of a phylogeny $\mathcal{P}$ and trait
-values $T_i$ for each extant species in the phylogeny $i$, to estimate
-the value of that trait at some historical point in the phylogeny
-(typically at the node representing the MRCA of a clade of interest).
+topic in phylogenetics [@Joy2016AncRec]. The goal is, given an estimate
+of a phylogeny $\mathcal{P}$ and trait values $T_i$ for each extant
+species in the phylogeny $i$, to estimate the value of that trait at
+some historical point in the phylogeny (typically at the node
+representing the MRCA of a clade of interest).
 
 To do this, one assumes a statistical model of evolution (and often
 tries to infer the best among a set of candidate models). Depending on
@@ -33,7 +43,6 @@ topology of the phelogeny itself [@Huelsenbeck2001EmpHie].
 
 Typically rate of trait evolution is learned as a single value across
 the whole phylogeny, and branch length enables 'amount' of evolution.
-
 Although in principle a hierarchical\* model could be used to infer both
 a global rate of evolution and rate values specific to each branch
 (\*sadly 'hierarchical' in this is sense different than 'hierarchical'
@@ -74,41 +83,84 @@ which the tree is built) could improve imputation accuracy.
 
 # Substance of the paper
 
-1.  Simulated phylogenies
-    -   Test predictive efficacy of PTL under various parameterization
-        of the "ground-truth" evolutionary dynamics
-        -   Rate of speciation
-        -   Rate of evolution
-        -   Trait dimensionality & correlation
-        -   Frequency of "puntuactions" (i.e. pertubations to trait
-            value at a speciation event)
-    -   Predictive efficancy under different data scenarios
-        -   Proportion of species with trait values
-        -   Predictive efficacy vs. distance to MRCA w/ data
-        -   Do we have a set of traits for all species to infer
-            evolutionary dynaimcs?
-            -   How correlated are evolution between traits for all
-                species vs. traits we want to impute
-2.  Real data
+The main substance of this paper is to provide guidelines on when PTL is
+robust, and diagnostics to validate PTL estimates. This will be done in
+two parts: **(1)** using simulated phylogenies and trait values to
+compare efficacy of PTL imputation across known "ground-truth"
+evolutionary dynamics, and **(2)** using published ASR datasets, with
+known values for all extant species, to test imputation efficacy
+empirically.
+
+## Simulated phylogenies
+
+First goal is to test predictive efficacy of PTL under various
+parameterizations of the "ground-truth" evolutionary dynamics, e.g. -
+Rate of speciation - Rate of evolution - Trait dimensionality &
+correlation - Frequency of "puntuactions" (i.e. pertubations to trait
+value at a speciation event)
+
+and second to compare efficacy based on different properties of the
+data, e.g. - Proportion of species with trait values - Predictive
+efficacy vs. distance to MRCA w/ data - Is there a set of traits for all
+species to infer evolutionary dynaimcs? - How correlated are evolution
+between traits for all species vs. traits we want to impute
+
+## Real data
 
 Thankfully there are lots of ACR studies out there with data for each
-extant species. So, in short, find as many ACR studies as we can,
+extant species. So, in short, find as many ACR studies as we can, and do
+crossvalidation where we drop the trait values for \~20% of the species
+and inpute them with PTL, and compare.
 
-Relevant questions we want to address: - What phylogenetic scales can
-PTL give robust predictions - There is a clear upper limit (if the MRCA
-for set of species is too long ago, there will be massive variance in
-predicted state at the tip) - There is also a lower limit (if there is
-horizontal-gene-transfer and the phylogeny is not a reliable proxy for
-how traits are evolving) - Robustness to noise in trait measurements? -
-How does this very w/ amount and different types of selection - When is
-PTL overkill? - Weighted average of neighbors by distance as alternative
-(ack. David Rolnick for idea)
+## Questions to address
+
+-   What phylogenetic scales can PTL give robust predictions?
+    -   There is a clear upper limit (if the MRCA for set of species is
+        too long ago, there will be massive variance in predicted state
+        at the tip)
+    -   There is also a lower limit (if there is
+        horizontal-gene-transfer and the phylogeny is not a reliable
+        proxy for how traits are evolving)
+    -   Robustness to noise in trait measurements?
+    -   How does this very w/ amount and different types of selection
+-   When is PTL overkill?
+    -   Weighted average of neighbors by distance as alternative (ack.
+        David Rolnick for idea)
+-   What diagnostics can we use to be confident a PTL inputated trait is
+    statistically robust?
 
 # Possible Applications
 
 The core idea of PTL is to fill in gaps for data-sparse processes in
-ecology.
+ecology, so naturally the applications are going to be focused.
 
--   Link prediction
--   SDMs: mechanistic niche predictions on subsets of species
--   Connectivity [@Catchen2023ImpEco]
+**Link prediction in networks**
+
+This is the inciting question for which the idea was
+conceived[@Strydom2022FooWeb]. Interactions are hard to sample
+[@Catchen202MisLin]. Not much to say here that isn't in
+[@Strydom2022GraEmb].
+
+**Forecasting species range shifts**
+
+Many projections of species range shifts under climate change are based
+on statistical associations between historical species observations and
+climatic conditions. The gap between so-called correlative
+vs. mechanistic species distribution models [@Shabani2016ComAbs] is of
+critical interest for forecasting species ranges, but robust mechanistic
+understandings about what and why climatic conditions limit where a
+species' range require detailed sampling and potentially experimental
+conditions [@Lee-Yaw2016SynTra], which are difficult to scale. PTL could
+potentially alleviate this by giving good proxies of the physiological
+limitations of species ranges for more species.
+
+**Connectivity and movement ecology**
+
+Reliable information about species movement is sparse, and PTL could
+fill this gap [@Catchen2023ImpEco].
+
+**Model species and ecological monitoring**
+
+There are a lot of species on Earth. Monitoring them all would be hard.
+Can we use single species a proxies for larger groups of species? Maybe
+a little. PTL can guide us on what good proxy species are.
