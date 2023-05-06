@@ -57,20 +57,22 @@ unobserved species $\mathcal{U}$.
 
 PTL does this by using ASR to infer a parameterized model of evolution and
 ancestral state of the partially observed trait, and then to simulate the
-parameterized evolutionary model forward from the ancestral node to get an
-estimate of trait values (with uncertainty) for each species in $\mathcal{U}$.
+parameterized evolutionary model forward from the most recent ancestral node
+with an estimate state to get a prediction of trait values (with uncertainty)
+for each unobserved species.
 
-The _transfer learning_ component in particular comes from the first use of this
+The _transfer learning_ terminology comes from the first use of this
 method to impute latent representations of species based on their position in
 food-webs [@Strydom2022FooWeb;@Strydom2022GraEmb], although the method if
 flexible enough to be applied to either latent or observed traits. 
 
 There are two possible models for PTL to be done in: (1) As in
-[@Strydom2022FooWeb], the the evolutionary model is inferred only from the
-observed trait values $\mathcal{O}$. (2) The evolutionary model from a trait for
-which there are observations available for the entire species pool. It may be
-the case that evolutionary dynamics inferred with auxiliary "global" traits available for every species (e.g. the raw sequences from which the tree is
-built) could improve imputation accuracy. 
+[@Strydom2022FooWeb], where the evolutionary model is inferred only from the
+observed trait values $\mathcal{O}$, or (2) the evolutionary model is infered
+from a trait for which there are observations available for the entire species
+pool. It may be the case that evolutionary dynamics inferred with auxiliary
+"global" traits available for every species (e.g. the raw sequences from which
+the tree is built) could improve imputation accuracy. 
 
 ![Conceptual visualization of PTL. Here, the trait of interest is partially
 observed only for cows and elephants. Using ASR, we can obtain an estimate of
@@ -105,7 +107,7 @@ and second to compare efficacy based on different properties of the data, e.g.
 
 - Proportion of species with trait values
 - Predictive efficacy vs. distance to MRCA w/ data
-- Is there a set of traits for all species to infer evolutionary dynamics?
+- Is there a set of "global" traits for all species that can be used to infer evolutionary dynamics?
     - How correlated are evolution between traits for all species vs.
     traits we want to impute
 
@@ -134,7 +136,8 @@ impute them with PTL, and compare.
 # Possible Applications
 
 The core idea of PTL is to fill in gaps for data-sparse processes in ecology, so
-naturally the applications are going to be focused.  
+naturally the applications are going to be focused toward things that are hard
+to sample.  
 
 **Link prediction in networks**
 
