@@ -343,7 +343,7 @@ Learning</div>
             trait, and then to simulate the parameterized evolutionary
             model forward from the ancestral node to get an estimate of
             trait values (with uncertainty) for each species in <span
-            class="math inline"><em>U</em></span>.</p>
+            class="math inline">𝒰</span>.</p>
             <p>The <em>transfer learning</em> component in particular
             comes from the first use of this methods to inpute latent
             representations of species based on their position in
@@ -357,10 +357,10 @@ Learning</div>
             data-cites="Strydom2022FooWeb">(Strydom <em>et al.</em>
             2022a)</span>, the the evolutionary model is inferred only
             from the observed trait values <span
-            class="math inline"><em>O</em></span>. (2) The evolutionary
-            model from a trait for which there are observations
-            available for the entire species pool. It may be the case
-            that evolutionary dynamics inferred with auxillary available
+            class="math inline">𝒪</span>. (2) The evolutionary model
+            from a trait for which there are observations available for
+            the entire species pool. It may be the case that
+            evolutionary dynamics inferred with auxillary available
             information for every species (e.g. the raw sequences from
             which the tree is built) could improve imputation
             accuracy.</p>
@@ -377,17 +377,26 @@ Learning</div>
             <h2 id="simulated-phylogenies">Simulated phylogenies</h2>
             <p>First goal is to test predictive efficacy of PTL under
             various parameterizations of the “ground-truth” evolutionary
-            dynamics, e.g. - Rate of speciation - Rate of evolution -
-            Trait dimensionality &amp; correlation - Frequency of
-            “puntuactions” (i.e. pertubations to trait value at a
-            speciation event)</p>
+            dynamics, e.g.</p>
+            <ul>
+            <li>Rate of speciation</li>
+            <li>Rate of evolution</li>
+            <li>Trait dimensionality &amp; correlation</li>
+            <li>Frequency of “puntuactions” (i.e. pertubations to trait
+            value at a speciation event)</li>
+            </ul>
             <p>and second to compare efficacy based on different
-            properties of the data, e.g. - Proportion of species with
-            trait values - Predictive efficacy vs. distance to MRCA w/
-            data - Is there a set of traits for all species to infer
-            evolutionary dynaimcs? - How correlated are evolution
-            between traits for all species vs. traits we want to
-            impute</p>
+            properties of the data, e.g.</p>
+            <ul>
+            <li>Proportion of species with trait values</li>
+            <li>Predictive efficacy vs. distance to MRCA w/ data</li>
+            <li>Is there a set of traits for all species to infer
+            evolutionary dynaimcs?
+            <ul>
+            <li>How correlated are evolution between traits for all
+            species vs. traits we want to impute</li>
+            </ul></li>
+            </ul>
             <h2 id="real-data">Real data</h2>
             <p>Thankfully there are lots of ACR studies out there with
             data for each extant species. So, in short, find as many ACR
@@ -437,16 +446,17 @@ Learning</div>
             historical species observations and climatic conditions. The
             gap between so-called correlative vs. mechanistic species
             distribution models <span class="citation"
-            data-cites="Shabani2016ComAbs">(<strong>Shabani2016ComAbs?</strong>)</span>
-            is of critical interest for forecasting species ranges, but
-            robust mechanistic understandings about what and why
-            climatic conditions limit where a species’ range require
+            data-cites="Shabani2016ComAbs">(Shabani <em>et al.</em>
+            2016)</span> is of critical interest for forecasting species
+            ranges, but robust mechanistic understandings about what and
+            why climatic conditions limit where a species’ range require
             detailed sampling and potentially experimental conditions
             <span class="citation"
-            data-cites="Lee-Yaw2016SynTra">(<strong>Lee-Yaw2016SynTra?</strong>)</span>,
-            which are difficult to scale. PTL could potentially
-            alleviate this by giving good proxies of the physiological
-            limitations of species ranges for more species.</p>
+            data-cites="Lee-Yaw2016SynTra">(Lee-Yaw <em>et al.</em>
+            2016)</span>, which are difficult to scale. PTL could
+            potentially alleviate this by giving good proxies of the
+            physiological limitations of species ranges for more
+            species.</p>
             <p><strong>Connectivity and movement ecology</strong></p>
             <p>Reliable information about species movement is sparse,
             and PTL could fill this gap <span class="citation"
@@ -482,6 +492,23 @@ Learning</div>
             href="https://doi.org/10.1371/journal.pcbi.1004763">Ancestral
             Reconstruction</a>. <em>PLOS Computational Biology</em>, 12,
             e1004763.
+            </div>
+            <div id="ref-Lee-Yaw2016SynTra" class="csl-entry"
+            role="doc-biblioentry">
+            Lee-Yaw, J.A., Kharouba, H.M., Bontrager, M., Mahony, C.,
+            Csergő, A.M., Noreen, A.M.E., <em>et al.</em> (2016). <a
+            href="https://doi.org/10.1111/ele.12604">A synthesis of
+            transplant experiments and ecological niche models suggests
+            that range limits are often niche limits</a>. <em>Ecology
+            Letters</em>, 19, 710–722.
+            </div>
+            <div id="ref-Shabani2016ComAbs" class="csl-entry"
+            role="doc-biblioentry">
+            Shabani, F., Kumar, L. &amp; Ahmadi, M. (2016). <a
+            href="https://doi.org/10.1002/ece3.2332">A comparison of
+            absolute performance of different correlative and
+            mechanistic species distribution models in an independent
+            area</a>. <em>Ecology and Evolution</em>, 6, 5973–5986.
             </div>
             <div id="ref-Strydom2022FooWeb" class="csl-entry"
             role="doc-biblioentry">
