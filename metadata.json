@@ -15,10 +15,7 @@
             ]
         }        
     ],
-    "abstract": {
-        "Premise": "Imputing traits among extant species using ancestral state resconstruction (ASR) can be useful for a wide variety of purposes in ecology",
-        "Substance": "Find a bunch of ASR datasets, do crossvalidation on tip states, test predictive efficacy on inputing 'hidden' species."
-    },
+    "abstract": "",
     "keywords": [
         "ancestral state resconstruction",
         "transfer learning",
