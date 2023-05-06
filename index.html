@@ -274,7 +274,7 @@ Learning</div>
             <h1 id="what-is-phylogenetic-transfer-learning">What is
             Phylogenetic Transfer Learning</h1>
             <p>The goal of PTL is to take a species pool for which a
-            given trait is only <em>partially</em> observed, and inpute
+            given trait is only <em>partially</em> observed, and impute
             the value of that trait for the rest of the species based on
             the evolutionary relatedness of each species.</p>
             <h2 id="ancestral-state-reconstruction">Ancestral State
@@ -300,17 +300,17 @@ Learning</div>
             a target of inference) or, in the continuous setting, either
             Brownian Motion or an Ornstein-Uhlenbeck (OU) process (where
             the parameters of the model are the target of inference).
-            The former is models neutral evolution and the latter is
-            used when there is hypothesized selection on the trait.</p>
+            The former is used to model neutral evolution and the latter
+            for when there is hypothesized selection on the trait.</p>
             <p>The methodology used to fit models has followed the
             historical progression from maximum parsimony models (a
             naive approach that favors as few evolutionary changes as
             possible in discrete traits) to maximum likelihood
-            estimation. Modern methods revolve on using Bayesian
-            methods, which has the direct benefit of including
-            uncertainty estimates in infered ancestral states, and
-            potentially uncertainty in the true topology of the
-            phelogeny itself <span class="citation"
+            estimation. Modern ASR typically uses Bayesian methods,
+            which has the direct benefit of including uncertainty
+            estimates in inferred ancestral states, and potentially
+            uncertainty in the true topology of the phylogeny itself
+            <span class="citation"
             data-cites="Huelsenbeck2001EmpHie">(Huelsenbeck &amp;
             Bollback 2001)</span>.</p>
             <p>Typically rate of trait evolution is learned as a single
@@ -324,7 +324,7 @@ Learning</div>
             Bollback (2001)</span>, which refers to different tree
             models but a single set of parameters across all
             branches—this is because these models are constructed in the
-            context of DNA substition rates, which are assumed to be
+            context of DNA substitution rates, which are assumed to be
             fixed).</p>
             <h2 id="phylogenetic-transfer-learning">Phylogenetic
             Transfer Learning</h2>
@@ -333,7 +333,7 @@ Learning</div>
             the species pool consists of two types of species: (1)
             species with trait observations, which we denote <span
             class="math inline">𝒪</span> and call the <em>observed</em>
-            species and (2) species <em>without</em> trait observatoins,
+            species and (2) species <em>without</em> trait observations,
             which we denote <span class="math inline">𝒰</span> and call
             <em>unobserved</em>, and produce predicted trait values for
             the unobserved species <span
@@ -345,7 +345,7 @@ Learning</div>
             trait values (with uncertainty) for each species in <span
             class="math inline">𝒰</span>.</p>
             <p>The <em>transfer learning</em> component in particular
-            comes from the first use of this methods to inpute latent
+            comes from the first use of this method to impute latent
             representations of species based on their position in
             food-webs <span class="citation"
             data-cites="Strydom2022FooWeb Strydom2022GraEmb">(Strydom
@@ -360,7 +360,7 @@ Learning</div>
             class="math inline">𝒪</span>. (2) The evolutionary model
             from a trait for which there are observations available for
             the entire species pool. It may be the case that
-            evolutionary dynamics inferred with auxillary “global”
+            evolutionary dynamics inferred with auxiliary “global”
             traits available for every species (e.g. the raw sequences
             from which the tree is built) could improve imputation
             accuracy.</p>
@@ -397,7 +397,7 @@ Learning</div>
             <li>Rate of speciation</li>
             <li>Rate of evolution</li>
             <li>Trait dimensionality &amp; correlation</li>
-            <li>Frequency of “puntuactions” (i.e. pertubations to trait
+            <li>Frequency of “punctuations” (i.e. perturbations to trait
             value at a speciation event)</li>
             </ul>
             <p>and second to compare efficacy based on different
@@ -406,7 +406,7 @@ Learning</div>
             <li>Proportion of species with trait values</li>
             <li>Predictive efficacy vs. distance to MRCA w/ data</li>
             <li>Is there a set of traits for all species to infer
-            evolutionary dynaimcs?
+            evolutionary dynamics?
             <ul>
             <li>How correlated are evolution between traits for all
             species vs. traits we want to impute</li>
@@ -416,7 +416,7 @@ Learning</div>
             <p>Thankfully there are lots of ACR studies out there with
             data for each extant species. So, in short, find as many ACR
             studies as we can, and do crossvalidation where we drop the
-            trait values for ~20% of the species and inpute them with
+            trait values for ~20% of the species and impute them with
             PTL, and compare.</p>
             <h2 id="questions-to-address">Questions to address</h2>
             <ul>
@@ -439,7 +439,7 @@ Learning</div>
             (ack. David Rolnick for idea)</li>
             </ul></li>
             <li>What diagnostics can we use to be confident a PTL
-            inputated trait is statistically robust?</li>
+            imputated trait is statistically robust?</li>
             </ul>
             <h1 id="possible-applications">Possible Applications</h1>
             <p>The core idea of PTL is to fill in gaps for data-sparse
@@ -451,7 +451,7 @@ Learning</div>
             data-cites="Strydom2022FooWeb">(Strydom <em>et al.</em>
             2022a)</span>. Interactions are hard to sample <span
             class="citation"
-            data-cites="Catchen202MisLin">(<strong>Catchen202MisLin?</strong>)</span>.
+            data-cites="Catchen2020MisLin">(<strong>Catchen2020MisLin?</strong>)</span>.
             Not much to say here that isn’t in <span class="citation"
             data-cites="Strydom2022GraEmb">(Strydom <em>et al.</em>
             2022b)</span>.</p>
@@ -480,9 +480,10 @@ Learning</div>
             <p><strong>Model species and ecological
             monitoring</strong></p>
             <p>There are a lot of species on Earth. Monitoring them all
-            would be hard. Can we use single species a proxies for
-            larger groups of species? Maybe a little. PTL can guide us
-            on what good proxy species are.</p>
+            would be hard. Can we use single species as a proxy for a
+            larger group of species? Maybe a little. PTL can guide us on
+            what good proxy species are.</p>
+            <h1 class="unnumbered" id="references">References</h1>
             <div id="refs"
             class="references csl-bib-body hanging-indent"
             role="doc-bibliography">
