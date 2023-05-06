@@ -99,7 +99,7 @@ of the "ground-truth" evolutionary dynamics, e.g.
 
 - Rate of speciation
 - Rate of evolution
-- Trait dimensionality & correlation
+- Trait dimensionality & correlation across dimensions
 - Frequency of "punctuations" (i.e. perturbations to trait value
 at a speciation event)
 
