@@ -272,6 +272,7 @@ Learning</div>
         </section>
 
         <article>
+            <p><strong>What is this paper?</strong></p>
             <h1 id="what-is-phylogenetic-transfer-learning">What is
             Phylogenetic Transfer Learning</h1>
             <h2 id="ancestral-state-reconstruction">Ancestral State
@@ -279,8 +280,8 @@ Learning</div>
             <p><em>Ancestral State Reconstruction</em> (ASR; also called
             ancestral character reconstruction, character estimation, or
             character mapping) is a core topic in phylogenetics <span
-            class="citation"
-            data-cites="Joy2016AncRec">(<strong>Joy2016AncRec?</strong>)</span>.</p>
+            class="citation" data-cites="Joy2016AncRec">(Joy <em>et
+            al.</em> 2016)</span>.</p>
             <p>The goal is, given an estimate of a phylogeny <span
             class="math inline">𝒫</span> and trait values <span
             class="math inline"><em>T</em><sub><em>i</em></sub></span>
@@ -295,8 +296,9 @@ Learning</div>
             discrete or continuous, the models are typically
             discrete-space Markov chains (where the transition matrix is
             a target of inference) or, in the continuous setting, either
-            Brownian Motion or an Ornstein-Uhlenbeck (OU) process, where
-            the former is used for neutral evolution and the latter is
+            Brownian Motion or an Ornstein-Uhlenbeck (OU) process (where
+            the parameters of the model are the target of inference).
+            The former is models neutral evolution and the latter is
             used when there is hypothesized selection on the trait.</p>
             <p>The methodology used to fit models has followed the
             historical progression from maximum parsimony models (a
@@ -304,44 +306,157 @@ Learning</div>
             possible in discrete traits) to maximum likelihood
             estimation. Modern methods revolve on using Bayesian
             methods, which has the direct benefit of including
-            uncertainty estimates in infered ancestral states.</p>
+            uncertainty estimates in infered ancestral states, and
+            potentially uncertainty in the true topology of the
+            phelogeny itself <span class="citation"
+            data-cites="Huelsenbeck2001EmpHie">(Huelsenbeck &amp;
+            Bollback 2001)</span>.</p>
+            <p>Typically rate of trait evolution is learned as a single
+            value across the whole phylogeny, and branch length enables
+            ‘amount’ of evolution.</p>
+            <p>Although in principle a hierarchical* model could be used
+            to infer both a global rate of evolution and rate values
+            specific to each branch (*sadly ‘hierarchical’ in this is
+            sense different than ‘hierarchical’ as it is used in <span
+            class="citation"
+            data-cites="Huelsenbeck2001EmpHie">Huelsenbeck &amp;
+            Bollback (2001)</span>, which refers to different tree
+            models but a single set of parameters across all
+            branches—this is because these models are constructed in the
+            context of DNA substition rates, which are assumed to be
+            fixed).</p>
             <h2 id="phylogenetic-transfer-learning">Phylogenetic
             Transfer Learning</h2>
-            <p>The core insight of Phylogenetic Transfer Learning (PTL)
-            is to take the the model of evolution and ancestral state
-            infered via ASR, and simulate the parameterized evolutionary
+            <p>The core goal of Phylogenetic Transfer Learning (PTL) is
+            to take a phylogeny <span class="math inline">𝒫</span> where
+            the species pool consists of two types of species: (1)
+            species with trait observations, which we denote <span
+            class="math inline">𝒪</span> and call the <em>observed</em>
+            species and (2) species <em>without</em> trait observatoins,
+            which we denote <span class="math inline">𝒰</span> and call
+            <em>unobserved</em>, and produce predicted trait values for
+            the unobserved species <span
+            class="math inline">𝒰</span>.</p>
+            <p>PTL does this by using ASR to infer a parameterized model
+            of evolution and ancestral state of the partially observed
+            trait, and then to simulate the parameterized evolutionary
             model forward from the ancestral node to get an estimate of
-            extant trait values (with uncertainty) for species without
-            trait observations <span
-            class="math inline"><em>T</em><sub><em>i</em></sub></span>.</p>
+            trait values (with uncertainty) for each species in <span
+            class="math inline"><em>U</em></span>.</p>
             <p>The <em>transfer learning</em> component in particular
             comes from the first use of this methods to inpute latent
-            representations of species <span class="citation"
-            data-cites="Strydom2022FooWeb Strydom2022GraEmb">(<strong>Strydom2022FooWeb?</strong>;
-            <strong>Strydom2022GraEmb?</strong>)</span></p>
+            representations of species based on their position in
+            food-webs <span class="citation"
+            data-cites="Strydom2022FooWeb Strydom2022GraEmb">(Strydom
+            <em>et al.</em> 2022a, b)</span>, although the method if
+            flexible enough to be applied to either latent or observed
+            traits.</p>
+            <p>There are two possible models for PTL to be done in: (1)
+            As in <span class="citation"
+            data-cites="Strydom2022FooWeb">(Strydom <em>et al.</em>
+            2022a)</span>, the the evolutionary model is inferred only
+            from the observed trait values <span
+            class="math inline"><em>O</em></span>. (2) The evolutionary
+            model from a trait for which there are observations
+            available for the entire species pool. It may be the case
+            that evolutionary dynamics inferred with auxillary available
+            information for every species (e.g. the raw sequences from
+            which the tree is built) could improve imputation
+            accuracy.</p>
             <h1 id="substance-of-the-paper">Substance of the paper</h1>
             <ol type="1">
             <li>Simulated phylogenies
             <ul>
-            <li>Various properties of radiation</li>
+            <li>Test predictive efficacy of PTL under various
+            parameterization of the “ground-truth” evolutionary dynamics
+            <ul>
+            <li>Rate of speciation</li>
+            <li>Rate of evolution</li>
+            <li>Trait dimensionality &amp; correlation</li>
+            <li>Frequency of “puntuactions” (i.e. pertubations to trait
+            value at a speciation event)</li>
+            </ul></li>
+            <li>Predictive efficancy under different data scenarios
+            <ul>
+            <li>Proportion of species with trait values</li>
+            <li>Predictive efficacy vs. distance to MRCA w/ data</li>
+            <li>Do we have a set of traits for all species to infer
+            evolutionary dynaimcs?
+            <ul>
+            <li>How correlated are evolution between traits for all
+            species vs. traits we want to impute</li>
+            </ul></li>
+            </ul></li>
             </ul></li>
             <li>Real data</li>
             </ol>
-            <p>Relevant questions: - What phylogenetic scales can PTL
-            give robust predictions - There is a clear upper limit (if
-            the MRCA for set of species is too long ago, there will be
-            massive variance in predicted state at the tip) - There is
-            also a lower limit (if there is HZT and the phylogeny is not
-            a reliable proxy for how traits are evolving) - Robustness
-            to noise is trait measurements? - How does this very w/
-            amount and different types of selection</p>
+            <p>Thankfully there are lots of ACR studies out there with
+            data for each extant species. So, in short, find as many ACR
+            studies as we can,</p>
+            <p>Relevant questions we want to address: - What
+            phylogenetic scales can PTL give robust predictions - There
+            is a clear upper limit (if the MRCA for set of species is
+            too long ago, there will be massive variance in predicted
+            state at the tip) - There is also a lower limit (if there is
+            horizontal-gene-transfer and the phylogeny is not a reliable
+            proxy for how traits are evolving) - Robustness to noise in
+            trait measurements? - How does this very w/ amount and
+            different types of selection - When is PTL overkill? -
+            Weighted average of neighbors by distance as alternative
+            (ack. David Rolnick for idea)</p>
             <h1 id="possible-applications">Possible Applications</h1>
+            <p>The core idea of PTL is to fill in gaps for data-sparse
+            processes in ecology.</p>
             <ul>
+            <li>Link prediction</li>
             <li>SDMs: mechanistic niche predictions on subsets of
             species</li>
             <li>Connectivity <span class="citation"
-            data-cites="Catchen2023ImpEco">(<strong>Catchen2023ImpEco?</strong>)</span></li>
+            data-cites="Catchen2023ImpEco">(Catchen <em>et al.</em>
+            2023)</span></li>
             </ul>
+            <div id="refs"
+            class="references csl-bib-body hanging-indent"
+            role="doc-bibliography">
+            <div id="ref-Catchen2023ImpEco" class="csl-entry"
+            role="doc-biblioentry">
+            Catchen, M.D., Lin, M., Poisot, T., Rolnick, D. &amp;
+            Gonzalez, A. (2023). Improving ecological connectivity
+            assessments with transfer learning and function
+            approximation.
+            </div>
+            <div id="ref-Huelsenbeck2001EmpHie" class="csl-entry"
+            role="doc-biblioentry">
+            Huelsenbeck, J.P. &amp; Bollback, J.P. (2001). <a
+            href="https://doi.org/10.1080/10635150119871">Empirical and
+            Hierarchical Bayesian Estimation of Ancestral States</a>.
+            <em>Systematic Biology</em>, 50, 351–366.
+            </div>
+            <div id="ref-Joy2016AncRec" class="csl-entry"
+            role="doc-biblioentry">
+            Joy, J.B., Liang, R.H., McCloskey, R.M., Nguyen, T. &amp;
+            Poon, A.F.Y. (2016). <a
+            href="https://doi.org/10.1371/journal.pcbi.1004763">Ancestral
+            Reconstruction</a>. <em>PLOS Computational Biology</em>, 12,
+            e1004763.
+            </div>
+            <div id="ref-Strydom2022FooWeb" class="csl-entry"
+            role="doc-biblioentry">
+            Strydom, T., Bouskila, S., Banville, F., Barros, C., Caron,
+            D., Farrell, M.J., <em>et al.</em> (2022a). <a
+            href="https://doi.org/10.1111/2041-210X.13835">Food web
+            reconstruction through phylogenetic transfer of low-rank
+            network representation</a>. <em>Methods in Ecology and
+            Evolution</em>, 13, 2838–2849.
+            </div>
+            <div id="ref-Strydom2022GraEmb" class="csl-entry"
+            role="doc-biblioentry">
+            Strydom, T., Bouskila, S., Banville, F., Barros, C., Caron,
+            D., Farrell, M.J., <em>et al.</em> (2022b). Graph embedding
+            and transfer learning can help predict potential species
+            interaction networks despite data limitations.
+            </div>
+            </div>
         </article>
     </main>
 

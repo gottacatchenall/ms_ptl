@@ -1,91 +1,37 @@
 [
     {
-        "issue": "2",
-        "issued": {
-            "date-parts": [
-                [
-                    1932,
-                    2
-                ]
-            ]
-        },
-        "container-title": "Journal of Experimental Zoology",
+        "publisher": "EcoEvoRxiv",
         "author": [
             {
-                "family": "Allee",
-                "given": "W. C."
+                "family": "Catchen",
+                "given": "Michael D."
             },
             {
-                "family": "Bowen",
-                "given": "Edith S."
-            }
-        ],
-        "id": "Allee1932StuAni",
-        "DOI": "10.1002/jez.1400610202",
-        "volume": "61",
-        "page": "185-207",
-        "title": "Studies in animal aggregations: Mass protection against colloidal silver among goldfishes",
-        "type": "article-journal"
-    },
-    {
-        "volume": "15",
-        "author": [
+                "family": "Lin",
+                "given": "Michelle"
+            },
             {
-                "family": "Camerano",
-                "given": "Lorenzo"
+                "family": "Poisot",
+                "given": "Timothée"
+            },
+            {
+                "family": "Rolnick",
+                "given": "David"
+            },
+            {
+                "family": "Gonzalez",
+                "given": "Andrew"
             }
         ],
-        "id": "Camerano1880EquViv",
-        "page": "393-414",
-        "title": "Dell’equilibrio dei viventi merce la reciproca distruzione",
+        "id": "Catchen2023ImpEco",
+        "title": "Improving ecological connectivity assessments with transfer learning and function approximation",
         "issued": {
             "date-parts": [
                 [
-                    1880
+                    2023
                 ]
             ]
         },
-        "container-title": "Atti Della R. Accad. Delle Sci. Torino",
-        "type": "article-journal"
-    },
-    {
-        "publisher": "University of Chicago Press",
-        "author": [
-            {
-                "family": "Elton",
-                "given": "Charles S"
-            }
-        ],
-        "id": "Elton1927AniEco",
-        "title": "Animal ecology",
-        "issued": {
-            "date-parts": [
-                [
-                    1927
-                ]
-            ]
-        },
-        "type": "book"
-    },
-    {
-        "volume": "41",
-        "author": [
-            {
-                "family": "Fahrenholz",
-                "given": "H."
-            }
-        ],
-        "id": "Fahrenholz1913EctUnd",
-        "page": "371-374",
-        "title": "Ectoparasiten und abstammungslehre",
-        "issued": {
-            "date-parts": [
-                [
-                    1913
-                ]
-            ]
-        },
-        "container-title": "Zool. Anz.",
         "type": "article-journal"
     },
     {
@@ -93,27 +39,192 @@
         "issued": {
             "date-parts": [
                 [
-                    1935,
-                    9
+                    2001
                 ]
             ]
         },
-        "container-title": "Proceedings of the Zoological Society of London",
+        "container-title": "Systematic Biology",
         "author": [
             {
-                "family": "Nicholson",
-                "given": "A. J."
+                "family": "Huelsenbeck",
+                "given": "John P."
             },
             {
-                "family": "Bailey",
-                "given": "V. A."
+                "family": "Bollback",
+                "given": "Jonathan P."
             }
         ],
-        "id": "Nicholson1935BalAni",
-        "DOI": "10.1111/j.1096-3642.1935.tb01680.x",
-        "volume": "105",
-        "page": "551-598",
-        "title": "The Balance of Animal Populations..",
+        "id": "Huelsenbeck2001EmpHie",
+        "DOI": "10.1080/10635150119871",
+        "volume": "50",
+        "page": "351-366",
+        "title": "Empirical and Hierarchical Bayesian Estimation of Ancestral States",
+        "type": "article-journal"
+    },
+    {
+        "publisher": "Public Library of Science",
+        "issue": "7",
+        "issued": {
+            "date-parts": [
+                [
+                    2016
+                ]
+            ]
+        },
+        "container-title": "PLOS Computational Biology",
+        "author": [
+            {
+                "family": "Joy",
+                "given": "Jeffrey B."
+            },
+            {
+                "family": "Liang",
+                "given": "Richard H."
+            },
+            {
+                "family": "McCloskey",
+                "given": "Rosemary M."
+            },
+            {
+                "family": "Nguyen",
+                "given": "T."
+            },
+            {
+                "family": "Poon",
+                "given": "Art F. Y."
+            }
+        ],
+        "id": "Joy2016AncRec",
+        "DOI": "10.1371/journal.pcbi.1004763",
+        "volume": "12",
+        "page": "e1004763",
+        "title": "Ancestral Reconstruction",
+        "type": "article-journal"
+    },
+    {
+        "issue": "12",
+        "issued": {
+            "date-parts": [
+                [
+                    2022
+                ]
+            ]
+        },
+        "container-title": "Methods in Ecology and Evolution",
+        "author": [
+            {
+                "family": "Strydom",
+                "given": "Tanya"
+            },
+            {
+                "family": "Bouskila",
+                "given": "Salomé"
+            },
+            {
+                "family": "Banville",
+                "given": "Francis"
+            },
+            {
+                "family": "Barros",
+                "given": "Ceres"
+            },
+            {
+                "family": "Caron",
+                "given": "Dominique"
+            },
+            {
+                "family": "Farrell",
+                "given": "Maxwell J."
+            },
+            {
+                "family": "Fortin",
+                "given": "Marie-Josée"
+            },
+            {
+                "family": "Hemming",
+                "given": "Victoria"
+            },
+            {
+                "family": "Mercier",
+                "given": "Benjamin"
+            },
+            {
+                "family": "Pollock",
+                "given": "Laura J."
+            },
+            {
+                "family": "Runghen",
+                "given": "Rogini"
+            },
+            {
+                "family": "Dalla Riva",
+                "given": "Giulio V."
+            },
+            {
+                "family": "Poisot",
+                "given": "Timothée"
+            }
+        ],
+        "id": "Strydom2022FooWeb",
+        "DOI": "10.1111/2041-210X.13835",
+        "volume": "13",
+        "page": "2838-2849",
+        "title": "Food web reconstruction through phylogenetic transfer of low-rank network representation",
+        "type": "article-journal"
+    },
+    {
+        "publisher": "EcoEvoRxiv",
+        "author": [
+            {
+                "family": "Strydom",
+                "given": "Tanya"
+            },
+            {
+                "family": "Bouskila",
+                "given": "Salomé"
+            },
+            {
+                "family": "Banville",
+                "given": "Francis"
+            },
+            {
+                "family": "Barros",
+                "given": "Ceres"
+            },
+            {
+                "family": "Caron",
+                "given": "Dominique"
+            },
+            {
+                "family": "Farrell",
+                "given": "Maxwell Jenner"
+            },
+            {
+                "family": "Fortin",
+                "given": "Marie-Josée"
+            },
+            {
+                "family": "Hemming",
+                "given": "Victoria"
+            },
+            {
+                "family": "Mercier",
+                "given": "Benjamin"
+            },
+            {
+                "family": "Pollock",
+                "given": "Laura J."
+            }
+        ],
+        "id": "Strydom2022GraEmb",
+        "title": "Graph embedding and transfer learning can help predict potential species interaction networks despite data limitations",
+        "issued": {
+            "date-parts": [
+                [
+                    2022
+                ]
+            ]
+        },
         "type": "article-journal"
     }
 ]
